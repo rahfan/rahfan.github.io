@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Portofolio</title>
+    <script src="assets/js/tailwind-3.4.16.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get("project");
+        const projectData = {
+          1: {
+            title: "Aplikasi Manajemen CV Gaza",
+            images: [
+              "cv-gaza-01.jpg",
+              "cv-gaza-02.jpg",
+              "cv-gaza-03.jpg",
+              "cv-gaza-04.jpg",
+              "cv-gaza-05.jpg",
+              "cv-gaza-06.jpg",
+              "cv-gaza-07.jpg",
+              "cv-gaza-08.jpg",
+              "cv-gaza-09.jpg",
+              "cv-gaza-10.jpg",
+              "cv-gaza-11.jpg",
+              "cv-gaza-12.jpg",
+              "cv-gaza-13.jpg",
+              "cv-gaza-14.jpg",
+              "cv-gaza-15.jpg",
+              "cv-gaza-16.jpg",
+              "cv-gaza-17.jpg",
+            ],
+          },
+        };
+
+        if (projectData[projectId]) {
+          document.getElementById("projectTitle").innerText =
+            projectData[projectId].title;
+          const gallery = document.getElementById("imageGallery");
+          projectData[projectId].images.forEach((img) => {
+            let link = document.createElement("a");
+            link.href = "/assets/img/" + img;
+            let imgElement = document.createElement("img");
+            imgElement.src = "/assets/img/" + img;
+            imgElement.classList.add(
+              "w-full",
+              "h-64",
+              "object-cover",
+              "rounded-lg",
+              "shadow-md"
+            );
+            link.appendChild(imgElement)
+            gallery.appendChild(link);
+          });
+        }
+      });
+    </script>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <header class="bg-[#0c2035] shadow-md text-white p-4 text-center">
+      <h1 class="text-2xl font-bold">Detail Portofolio</h1>
+    </header>
+
+    <section class="container mx-auto py-10">
+      <h2 id="projectTitle" class="text-3xl font-bold text-center mb-6"></h2>
+      <div id="imageGallery" class="grid md:grid-cols-3 gap-4 px-4"></div>
+    </section>
+
+    <footer class="bg-gray-800 text-white text-center py-4 mt-10">
+      <p>&copy; 2025 Rahfan Software Developer. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
